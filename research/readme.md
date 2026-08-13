@@ -1181,3 +1181,24 @@ that conventional homework rarely measures directly:
 > **how to encounter something you do not understand, ask progressively
 > better questions, evaluate the answers critically, and build a
 > defensible technical model of your own.**
+
+
+------------------------------------------------------------------------
+
+## 26. Research Ethics and Preprint Status
+
+The original Deliberate Gap Learning (DGL) study was reviewed under **Drexel University IRB Protocol #2605011810** and was determined to qualify as **Category 2(i) exempt research**.
+
+That study resulted in the manuscript provided in this directory as:
+
+```text
+original-dgl-preprint.pdf
+```
+
+This document is provided as an **author preprint** of the manuscript submitted for publication. Its availability here is consistent with the preprint policy of the journal to which the manuscript was submitted.
+
+The revised DGL materials and proposed follow-up research described in this repository build upon that original study.
+
+An updated IRB request is currently being prepared for the proposed follow-up research. The homework materials themselves are being developed and used as part of the normal course curriculum; the updated IRB request addresses the proposed research use of data generated through that course activity.
+
+The appropriate review category for the follow-up study will be determined through Drexel University's institutional review process. No data from the follow-up implementation will be used for research purposes except in accordance with the applicable institutional review and approval requirements.
