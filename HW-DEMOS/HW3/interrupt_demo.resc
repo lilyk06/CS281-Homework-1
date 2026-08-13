@@ -1,0 +1,29 @@
+# interrupt_demo.resc
+# Renode script: loads the shared minimal platform and the interrupt-
+# driven ELF, routes UART output straight into this console (headless
+# mode sends analyzer output to the log instead of opening a window),
+# also logs it to interrupt_demo_uart.log as a backup, starts the
+# machine, then pulses the CLINT's software interrupt register once
+# every 5 real seconds for 10 pulses (about 50 seconds total), using
+# Renode's built-in Python scripting. See interrupt_demo.s for why the
+# hardware timer-compare interrupt isn't used here.
+#
+# Run with: renode interrupt_demo.resc
+#
+# Expect one "IRQ fired!" line roughly every 5 seconds, calm and
+# infrequent, in contrast to poll_demo's constant status lines.
+
+mach create "interrupt_demo"
+machine LoadPlatformDescription @hw3_renode.repl
+sysbus LoadELF @interrupt_demo.elf
+showAnalyzer uart
+uart CreateFileBackend @interrupt_demo_uart.log true
+start
+
+set pulse_script """
+import time
+for i in range(10):
+    time.sleep(5)
+    monitor.Machine['sysbus'].WriteDoubleWord(0x02000000, 1)
+"""
+python $pulse_script

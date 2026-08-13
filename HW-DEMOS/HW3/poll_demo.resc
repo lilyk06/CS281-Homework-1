@@ -1,0 +1,13 @@
+# poll_demo.resc
+# Renode script: loads the shared minimal platform and the polling
+# ELF, routes UART output straight into this console (headless mode
+# sends analyzer output to the log instead of opening a window), also
+# logs it to poll_demo_uart.log as a backup, then starts the machine.
+# Run with: renode poll_demo.resc
+
+mach create "poll_demo"
+machine LoadPlatformDescription @hw3_renode.repl
+sysbus LoadELF @poll_demo.elf
+showAnalyzer uart
+uart CreateFileBackend @poll_demo_uart.log true
+start

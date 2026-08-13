@@ -1,0 +1,17 @@
+# interrupt_diag_spin.resc
+# Renode script: loads the shared minimal platform and the diagnostic
+# busy-spin ELF, routes UART output straight into this console (headless
+# mode sends analyzer output to the log instead of opening a window),
+# also logs it to interrupt_diag_spin_uart.log as a backup, then starts
+# the machine. Run with: renode interrupt_diag_spin.resc
+#
+# This file is a debugging aid, not the classroom demo, it exists to
+# tell us whether a timer interrupt fires while the CPU is actively
+# spinning, as a point of comparison against interrupt_demo.s's wfi.
+
+mach create "interrupt_diag_spin"
+machine LoadPlatformDescription @hw3_renode.repl
+sysbus LoadELF @interrupt_diag_spin.elf
+showAnalyzer uart
+uart CreateFileBackend @interrupt_diag_spin_uart.log true
+start
