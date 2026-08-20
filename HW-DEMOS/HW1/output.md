@@ -1,3 +1,7 @@
+# HW1 Output
+
+The goal of this demo was to show the added expressiveness of X64 assembly over RISCV - remember you would likely prefer X64 assembly over RISC-V if you were a full time assembler programmer.  These days we have compilers to abstract assembler except for very rare use cases. 
+
 ```bash
 bsm23@RISCV:~/SYSARCH-HW/HW1$ ./buildandrunwcode.sh 
 

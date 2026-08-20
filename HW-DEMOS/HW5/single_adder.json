@@ -1,35 +1,22 @@
 {
   "extensionVersion": "1.5.4",
-  "fileName": "/home/bsm23/SysArch-DGL/HW-DEMOS/HW5/clocked_adder_ok.vcd",
+  "fileName": "/home/bsm23/SysArch-DGL/HW-DEMOS/HW5/single_adder.vcd",
   "markerTime": null,
   "altMarkerTime": null,
   "displayTimeUnit": "ps",
   "selectedSignal": {
-    "name": "tb_clocked_adder.sum",
+    "name": "tb_single_adder.sum",
     "msb": -1,
     "lsb": -1
   },
-  "zoomRatio": 0.005622993040202297,
+  "zoomRatio": 0.0038622233360683595,
   "scrollLeft": 0,
   "defaultPixelTime": 100000,
   "displayedSignals": [
     {
       "dataType": "netlist-variable",
-      "netlistId": 12,
-      "name": "tb_clocked_adder.clk",
-      "numberFormat": "binary",
-      "colorIndex": 0,
-      "rowHeight": 1,
-      "verticalScale": 1,
-      "nameType": "fullPath",
-      "customName": "clk",
-      "renderType": "binary",
-      "valueLinkEnable": false
-    },
-    {
-      "dataType": "netlist-variable",
-      "netlistId": 9,
-      "name": "tb_clocked_adder.a",
+      "netlistId": 6,
+      "name": "tb_single_adder.a",
       "numberFormat": "binary",
       "colorIndex": 0,
       "rowHeight": 1,
@@ -41,8 +28,8 @@
     },
     {
       "dataType": "netlist-variable",
-      "netlistId": 10,
-      "name": "tb_clocked_adder.b",
+      "netlistId": 7,
+      "name": "tb_single_adder.b",
       "numberFormat": "binary",
       "colorIndex": 0,
       "rowHeight": 1,
@@ -54,8 +41,8 @@
     },
     {
       "dataType": "netlist-variable",
-      "netlistId": 11,
-      "name": "tb_clocked_adder.cin",
+      "netlistId": 8,
+      "name": "tb_single_adder.cin",
       "numberFormat": "binary",
       "colorIndex": 0,
       "rowHeight": 1,
@@ -68,7 +55,7 @@
     {
       "dataType": "netlist-variable",
       "netlistId": 1,
-      "name": "tb_clocked_adder.cout",
+      "name": "tb_single_adder.cout",
       "numberFormat": "binary",
       "colorIndex": 0,
       "rowHeight": 1,
@@ -81,7 +68,7 @@
     {
       "dataType": "netlist-variable",
       "netlistId": 0,
-      "name": "tb_clocked_adder.sum",
+      "name": "tb_single_adder.sum",
       "numberFormat": "binary",
       "colorIndex": 0,
       "rowHeight": 1,
