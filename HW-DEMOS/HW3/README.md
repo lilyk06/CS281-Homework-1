@@ -29,6 +29,7 @@ number.
 - `poll_demo.resc` / `interrupt_demo.resc`: Renode scripts that load
   the platform, the matching ELF, set up UART output, and start the
   machine.
+- [`output.md`](./output.md):  Sample output from the HW3 demo. 
 
 ## 1. Build
 

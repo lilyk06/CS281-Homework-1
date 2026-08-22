@@ -23,6 +23,7 @@ plain Unix `time` command rather than any custom instrumentation.
   demo deliberately doesn't use.
 - `Makefile`: builds `fp_demo_soft` (no F extension) and `fp_demo_hard`
   (rv64gc, hardware F) from the same source file.
+- [`output.md`](./output.md):  Sample output from the HW4 demo. 
 
 ## 0. Prerequisites (Ubuntu)
 

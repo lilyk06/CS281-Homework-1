@@ -121,6 +121,7 @@ miniature, made to work correctly on purpose instead of by luck.
   you want the scaling point on its own: `iverilog -o sim8.vvp
   -Ptb_ripple_adder.WIDTH=8 full_adder.v ripple_adder.v
   tb_ripple_adder.v && vvp sim8.vvp`.
+- [`output.md`](./output.md):  Sample output from the HW5 demo. 
 
 ## 0. Prerequisites (Ubuntu)
 

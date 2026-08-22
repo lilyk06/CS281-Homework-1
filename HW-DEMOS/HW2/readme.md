@@ -46,6 +46,7 @@ cache-line table.
   the caveat in Section 3 below, it matters).
 - `HW2_Locality_Demo.o` / `HW2_Locality_Demo`: a build output already
   in the folder. Rebuilding overwrites both, see Section 2.
+- [`output.md`](./output.md):  Sample output from the HW2 demo. 
 
 ## 0. Prerequisites (Ubuntu VM)
 

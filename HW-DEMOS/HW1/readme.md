@@ -50,6 +50,7 @@ they tell two different, complementary parts of the same story:
 - `demo-x64` / `demo-riscv` / `demo-x64-O1` / `demo-riscv-O1`: compiled
   binaries from the last run of each script. Rebuilding overwrites the
   matching pair.
+- [`output.md`](./output.md):  Sample output from the HW1 demo. 
 
 ## 0. Prerequisites (Ubuntu)
 
