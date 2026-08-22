@@ -178,7 +178,7 @@ Run:
 python gpu_demo.py
 ```
 
-The program performs matrix multiplication using two different execution approaches.
+The program performs matrix multiplication using two different execution approaches.  ** NOTE:  That in order to run this you must have access to a machine with a GPU - on my machine I need to run on MAC OS becasue `pytorch` supports Apple Silicone GPUs. **. I was unable to run this on a local VM because of lack of suport for GPU passthrough. 
 
 ## CPU
 

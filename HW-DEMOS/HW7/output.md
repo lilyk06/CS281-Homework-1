@@ -1,3 +1,7 @@
+# HW6 Output
+
+This demo shows how the parallel execution of a highly optimized GPU architecture can result in a massive speedup in common computations used in special purpose applications and algorithms such as AI.
+
 ```bash
 ============================================================
 DGL HW7 - EXECUTION MODEL DEMO
