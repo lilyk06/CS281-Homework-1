@@ -1,9 +1,3 @@
-I will start `HW6.md` now.
-
-Because of the length, I will provide only the file content. No additional commentary.
-
----
-
 # HW6: Your Program Is Sequential. Your Processor Is Not.
 
 ## Connect
