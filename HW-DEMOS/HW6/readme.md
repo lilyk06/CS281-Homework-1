@@ -53,6 +53,25 @@ The goal is not to model a complete CPU. Instead, the goal is to observe two imp
 
 ---
 
+## Files
+
+- `hw6_scheduler.v`: the scheduler and three execution units (`INT0`,
+  `INT1`, `MUL0`), driven directly by a fixed instruction stream rather
+  than a full fetch/decode pipeline.
+- `hw6_scheduler_tb.v`: testbench that runs both scenarios (independent
+  instructions, then a data hazard into the multiply unit) back to
+  back and dumps `hw6_scheduler.vcd`.
+- `makefile`: builds and runs the simulation (`make`, `make run`,
+  `make clean`).
+- `hw6_scheduler.json`: a saved VaporView session (signal selection,
+  zoom, marker position) for `hw6_scheduler.vcd`, so the waveform
+  reopens with the right signals already displayed.
+- `hw6_execution_analysis.png`: annotated waveform screenshot used in
+  the Post-Demo Analysis section below.
+- [`output.md`](./output.md):  Sample output from the HW6 demo.
+
+---
+
 # Scenario 0: Independent Instructions
 
 The processor receives these RISC-V instructions:

@@ -44,6 +44,20 @@ That's where this demo begins.
 
 ---
 
+## Files
+
+- `gpu_demo.py`: runs the same matrix multiplication on CPU (naive
+  nested loops) and GPU (PyTorch), at progressively larger matrix
+  sizes, and prints the timing comparison table shown below.
+- `requirements.txt`: Python dependencies (`torch`), installed into a
+  virtual environment by `make setup`.
+- `makefile`: `make setup` creates a venv and installs dependencies,
+  `make run` runs the demo, `make info` prints PyTorch/GPU backend
+  info, `make clean` removes the venv.
+- [`output.md`](./output.md):  Sample output from the HW7 demo.
+
+---
+
 # The Computation
 
 We will use **matrix multiplication**.

@@ -2,7 +2,7 @@ PYTHON := python3
 VENV := .venv
 VENV_PYTHON := $(VENV)/bin/python
 VENV_PIP := $(VENV)/bin/pip
-DEMO := demo.py
+DEMO := gpu_demo.py
 
 .PHONY: help setup run clean info
 
