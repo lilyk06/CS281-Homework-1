@@ -30,10 +30,3 @@ Each `HW#` subdirectory follows the same structure:
 | [HW5](./HW5) | Your Code Runs One Line at a Time. Your Circuit Doesn't. | Explores why a hand-built digital circuit doesn't behave like the sequential code students are used to reasoning about. Three back-to-back Verilog demos show a real full adder producing verifiably wrong values when read with no clock, a real MISMATCH when clocked faster than its settle time, and correct output only once the clock period actually respects propagation delay. |
 | [HW6](./HW6) | Your Program Is Sequential. Your Processor Is Not. | Explores how a processor can execute more than one instruction per cycle even though the program itself is written as a strict sequence. The demo drives a small scheduler with two integer units and one multiply unit through two scenarios: independent instructions issuing together, then a data-dependent instruction stalling even though its own execution unit sits completely idle, waiting on a value. |
 | [HW7](./HW7) | One Architecture Doesn't Fit Every Problem | Explores why the same matrix multiplication can run dramatically faster on a GPU than a CPU, but only once the problem is large enough. The demo runs identical CPU and GPU implementations across growing matrix sizes and shows the CPU winning by orders of magnitude on tiny inputs before the GPU takes over by orders of magnitude on large ones, challenging the assumption that one processor design is simply "better." |
-
-All seven demos are now driven the same way: `make` builds/runs, `make
-clean` tears down. HW1's old standalone shell scripts
-(`buildandrunwcode.sh`, `buildandrunwcode_O1.sh`, `buildandrun.sh`,
-`clean.sh`) have been retired in favor of `Makefile` targets
-(`run-o0`, `run-o1`, `run-o0-raw`, `run`, `clean`), see its `readme.md`
-for the mapping from old script name to new target.
