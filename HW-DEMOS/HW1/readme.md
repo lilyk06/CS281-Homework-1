@@ -6,21 +6,21 @@ for RISC-V, disassembled side by side. This is the live hook
 run in class ("compile a trivial function containing one `add` for
 both `riscv64` and `x86_64` targets, disassemble both with objdump,
 and project them side by side"), just built out as a real, runnable
-script instead of something assembled live on the fly, with several
+demo instead of something assembled live on the fly, with several
 instructive extra findings the original single-`add` version wouldn't
 have surfaced.
 
-There are two build scripts, at two different optimization levels, and
+There are two build modes, at two different optimization levels, and
 they tell two different, complementary parts of the same story:
 
-- **`buildandrunwcode.sh` (`-O0`)** shows RISC-V's *load/store* cost:
-  every array access needs its address rebuilt from scratch, an honest
-  worst case that isn't optimized away.
-- **`buildandrunwcode_O1.sh` (`-O1`)** shows x86-64's actual
-  *expressiveness* advantage: the ability to fold a memory read
-  directly into an ALU instruction, something RISC-V's ISA cannot do
-  at any optimization level, since it has no register-memory ALU
-  instruction to fold into in the first place.
+- **`-O0`** (`make run-o0`) shows RISC-V's *load/store* cost: every
+  array access needs its address rebuilt from scratch, an honest worst
+  case that isn't optimized away.
+- **`-O1`** (`make run-o1`) shows x86-64's actual *expressiveness*
+  advantage: the ability to fold a memory read directly into an ALU
+  instruction, something RISC-V's ISA cannot do at any optimization
+  level, since it has no register-memory ALU instruction to fold into
+  in the first place.
 
 ## Files
 
@@ -29,39 +29,37 @@ they tell two different, complementary parts of the same story:
   plus one scalar add (`b = b + 5`). The array was originally 3
   elements with a single 2-term add; widened specifically to make the
   `-O1` memory-fold gap grow without bound as more terms are added,
-  rather than staying fixed. `ouptuts.md` was captured from the
+  rather than staying fixed. `output.md` was captured from the
   original 3-element/2-term version and is kept for the `-O0`
   discussion in Section 3, which is unaffected by the widening; see
   the note at the top of that section.
-- `buildandrunwcode.sh`: `-O0` build, cross-compiles for both targets
-  and disassembles both, with `-g -S` so the original C source lines
-  are interleaved with the assembly.
-- `buildandrunwcode_O1.sh`: same idea at `-O1`, also emits each
-  target's raw compiler-generated assembly (`demo-x64-O1.s`,
-  `demo-riscv-O1.s`) alongside the objdump disassembly, useful if you
-  want to see GCC's own output directly rather than reading it back out
-  of a disassembler.
-- `buildandrun.sh`: the `-O0` build without `-g -S`, so the
-  disassembly shows raw addresses and bytes with no source
-  interleaving. Skip it unless the source-line output feels too busy.
-- `ouptuts.md`: a saved real `-O0` run, from the original 3-element/
-  2-term version of `demo.c`, so those specific numbers can be checked
-  without re-running anything.
+- `demo2.c`: the original 3-element/2-term version of the program,
+  kept as-is so `output.md` can be reproduced exactly on demand (see
+  Section 3) instead of only trusting the saved copy.
+- `Makefile`: builds and disassembles both targets. `make run-o0` /
+  `make run-o1` / `make run-o0-raw` map directly to the three build
+  modes described below; `make run` does `run-o0` then `run-o1`, the
+  sequence Section 1 walks through; `make clean` removes every
+  generated binary and `.s` file. Pass `SRC=demo2.c` to any `run-*`
+  target to build the original version `output.md` came from instead
+  of the current `demo.c`.
 - `demo-x64` / `demo-riscv` / `demo-x64-O1` / `demo-riscv-O1`: compiled
-  binaries from the last run of each script. Rebuilding overwrites the
-  matching pair.
+  binaries from the last `make` run. Rebuilding overwrites the matching
+  pair.
 - [`output.md`](./output.md):  Sample output from the HW1 demo. 
 
 ## 0. Prerequisites (Ubuntu)
 
-Two cross-compilers, both providing a matching `objdump`:
+Two cross-compilers, both providing a matching `objdump`, plus `make`:
 
 ```
 sudo apt update
-sudo apt install gcc-x86-64-linux-gnu gcc-riscv64-linux-gnu
+sudo apt install build-essential gcc-x86-64-linux-gnu gcc-riscv64-linux-gnu
 ```
 
-Verify all four tools are on the `PATH`:
+- `build-essential` provides `make` (skip if already installed).
+
+Verify all four remaining tools are on the `PATH`:
 
 ```
 x86_64-linux-gnu-gcc --version
@@ -73,14 +71,16 @@ riscv64-linux-gnu-objdump --version
 ## 1. Run
 
 ```
-chmod +x buildandrunwcode.sh buildandrunwcode_O1.sh
-./buildandrunwcode.sh      # -O0: RISC-V's load/store cost
-./buildandrunwcode_O1.sh   # -O1: x86-64's memory-fold advantage
+make run
 ```
 
-Each prints both disassemblies to the terminal, x86-64 first, then
-RISC-V. `ouptuts.md` has a saved copy of the `-O0` run if you want to
-read it without a toolchain installed.
+This runs `run-o0` (-O0: RISC-V's load/store cost) then `run-o1` (-O1:
+x86-64's memory-fold advantage) back to back, and prints both
+disassemblies to the terminal, x86-64 first, then RISC-V, for each. Run
+either step on its own with `make run-o0` or `make run-o1` if you only
+want one half of the story. `output.md` has a saved copy of the `-O0`
+run if you want to read it without a toolchain installed, and
+`make clean` removes everything the build produces.
 
 ## 2. The main finding: x86-64 folds, RISC-V can't, and the gap widens
 
@@ -125,12 +125,14 @@ beyond what it's already doing. The fold advantage only shows up, and
 grows, when multiple memory operands are chained together in one
 expression, exactly the `a[]` case.
 
-## 3. What the `-O0` build (`ouptuts.md`) shows instead
+## 3. What the `-O0` build (`output.md`) shows instead
 
 *(Reflects the original 3-element array, `a[2] = a[0] + a[1]`, before
 the array was widened to 7 elements/6 terms for Section 2 above. This
 finding is unaffected by that change, it's about RISC-V's address cost
-specifically, not the number of terms being summed.)*
+specifically, not the number of terms being summed. Reproduce it
+directly with `make run-o0 SRC=demo2.c` if you want a fresh run instead
+of the saved copy.)*
 
 At `-O0`, neither ISA folds anything, GCC doesn't run the optimization
 pass responsible for that at `-O0` on either target, so both sides
@@ -148,7 +150,7 @@ optimization level, one line pays RISC-V's address cost and the very
 next one doesn't.
 
 Total instruction count for the whole (original, 3-element) function,
-from `ouptuts.md`: 13 x86-64 instructions vs. 23 RISC-V instructions.
+from `output.md`: 13 x86-64 instructions vs. 23 RISC-V instructions.
 
 Worth being upfront about `-O0` itself: it's what makes the address-
 materialization cost visible at all. A real compiler at `-O1` or
@@ -163,7 +165,7 @@ finding rather than combined with it.
 ## 4. If you want to use this live instead of (or alongside) the Concept table
 
 The current instructor hook in `HW1_v2_draft.md` describes compiling a
-single `add` on the fly. These scripts are a ready-made, saved-output
+single `add` on the fly. This demo is a ready-made, saved-output
 alternative that shows a fuller picture: fixed vs. variable
 instruction width, RISC-V's address-materialization cost at `-O0`
 (Section 3), and, most directly relevant to the "x86-64 is more

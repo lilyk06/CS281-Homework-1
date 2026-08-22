@@ -31,13 +31,9 @@ Each `HW#` subdirectory follows the same structure:
 | [HW6](./HW6) | Your Program Is Sequential. Your Processor Is Not. | Explores how a processor can execute more than one instruction per cycle even though the program itself is written as a strict sequence. The demo drives a small scheduler with two integer units and one multiply unit through two scenarios: independent instructions issuing together, then a data-dependent instruction stalling even though its own execution unit sits completely idle, waiting on a value. |
 | [HW7](./HW7) | One Architecture Doesn't Fit Every Problem | Explores why the same matrix multiplication can run dramatically faster on a GPU than a CPU, but only once the problem is large enough. The demo runs identical CPU and GPU implementations across growing matrix sizes and shows the CPU winning by orders of magnitude on tiny inputs before the GPU takes over by orders of magnitude on large ones, challenging the assumption that one processor design is simply "better." |
 
-## A couple of things worth knowing before you dig in
-
-- **HW1 doesn't have a makefile yet.** It's the one demo still driven by
-  standalone shell scripts (`buildandrunwcode.sh`, `buildandrunwcode_O1.sh`,
-  `buildandrun.sh`), not a `make` target. Worth bringing in line with the
-  other six if a single, consistent "just run `make`" story matters to you.
-- **`HW6.md`, the graded assignment one level up, has a few stray leading
-  lines** ("I will start `HW6.md` now...") left over from however that
-  file was generated, before its real `# HW6:` title. Easy fix, flagging
-  it here since it's the one assignment file that isn't clean.
+All seven demos are now driven the same way: `make` builds/runs, `make
+clean` tears down. HW1's old standalone shell scripts
+(`buildandrunwcode.sh`, `buildandrunwcode_O1.sh`, `buildandrun.sh`,
+`clean.sh`) have been retired in favor of `Makefile` targets
+(`run-o0`, `run-o1`, `run-o0-raw`, `run`, `clean`), see its `readme.md`
+for the mapping from old script name to new target.
