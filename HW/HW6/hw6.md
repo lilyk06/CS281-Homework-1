@@ -1,3 +1,4 @@
+
 # HW6: Your Program Is Sequential. Your Processor Is Not.
 
 ## Connect
@@ -804,14 +805,20 @@ The goal is to document:
 
 ---
 
-# Feedback on the Assignment (5 free points)
+# Feedback on the Assignment
 
-Your opportunity to tell us about this assignment.
+Your opportunity to provide feedback about this assignment.
 
-There are no right or wrong answers. All items below are graded on **completion only**, never on the response selected. Selecting **Prefer not to answer** counts as complete.
+There are no right or wrong answers.
+
+All items are graded on completion only.
+
+Selecting "Prefer not to answer" counts as complete.
 
 
-### B1 — Before
+---
+
+## B1 — Before This Assignment
 
 Before this assignment, how well could you explain why a processor can execute multiple instructions at the same time even though programs are written sequentially?
 
@@ -824,7 +831,9 @@ Before this assignment, how well could you explain why a processor can execute m
 - ☐ Prefer not to answer
 
 
-### P1 — After
+---
+
+## P1 — After This Assignment
 
 After completing this assignment, how well could you explain why a processor can execute multiple instructions at the same time even though programs are written sequentially?
 
@@ -837,58 +846,84 @@ After completing this assignment, how well could you explain why a processor can
 - ☐ Prefer not to answer
 
 
-### INV — What drove your investigation?
+---
 
-Thinking about your AI investigation on this assignment, which statement best describes what **primarily drove your approach**?
+## INV — What Drove Your Investigation?
 
-Pick the one that fits best.
+Thinking about your AI investigation, which statement best describes your approach?
 
-- ☐ I mainly wanted to complete the required assignment efficiently.
+- ☐ I mainly wanted to complete the assignment efficiently.
 - ☐ I mainly wanted to understand enough to answer the required questions.
-- ☐ I mainly wanted to understand why sequential RISC-V instructions could overlap in hardware while a data dependency could prevent that overlap.
-- ☐ I mainly wanted to understand processor scheduling and parallel execution well enough that I could explain or apply the ideas beyond this assignment.
-- ☐ Something else. *(Optional: tell us what.)*
-- ☐ Prefer not to answer
+- ☐ I mainly wanted to understand why processor behavior differs from the sequential software model.
+- ☐ I mainly wanted to understand how real processors create and manage parallel execution.
+- ☐ Something else:
 
-
-### DEMO — Did the demonstration create a useful question?
-
-After seeing the instruction-scheduling demonstration, how strongly did you want to understand **why independent instructions could overlap execution while the dependent multiply instruction had to wait even though the multiply hardware was available?**
-
-1. Not at all — the result did not make me curious about the reason.
-2. Slightly — I noticed the behavior but was not particularly motivated to investigate it.
-3. Moderately — I wanted to understand the basic explanation.
-4. Strongly — the result made me want to understand how processors find and manage parallel execution opportunities.
-5. Very strongly — the result made me want to investigate beyond what the assignment required.
+________________________________________________
 
 - ☐ Prefer not to answer
 
 
-### FAV — What helped most?
+---
 
-Which part of this homework helped you **understand the topic the most**?
+## FAV — What Helped Most?
 
-Pick one.
+Which part of this homework helped you understand the topic the most?
 
 - ☐ The in-class demonstration
 - ☐ The waveform analysis
 - ☐ Connecting the demo to RISC-V instructions
-- ☐ Reading the Concept section
+- ☐ The Concept section
 - ☐ The AI investigation
 - ☐ Investigating a real processor
-- ☐ Challenging or verifying something the AI told me
-- ☐ Answering the Confirm questions
+- ☐ Challenging or verifying AI responses
+- ☐ Confirm questions
+
 - ☐ Prefer not to answer
 
 
-### SCA — What should we do with this format?
+---
 
-Thinking about the topic and the process overall, what should we do with this homework format going forward?
+## DEMO — Impact of the Demonstration
 
-- ☐ **Continue as is.** *Tell us more (optional): any suggestions to make it even better?*
-- ☐ **Adjust something.** *Tell us more (optional): what would you change?*
-- ☐ **Stop, and go back to a traditional homework model.** *Tell us more (optional): what didn't work for you?*
+The demonstration helped me understand how sequential programs can result in parallel hardware execution.
+
+1. Strongly disagree
+2. Disagree
+3. Neither agree nor disagree
+4. Agree
+5. Strongly agree
+
 - ☐ Prefer not to answer
+
+
+---
+
+## AIUSE — How Did You Use AI?
+
+During this assignment, how did you primarily use AI?
+
+- ☐ To quickly obtain answers.
+- ☐ To explain concepts I did not understand.
+- ☐ To generate follow-up questions.
+- ☐ To explore concepts beyond the assignment.
+- ☐ To verify information and compare explanations.
+- ☐ Other:
+
+________________________________________________
+
+- ☐ Prefer not to answer
+
+# AI Investigation Skills
+
+For each statement below, indicate how much you agree or disagree based on what you can do right now, not what you think you are expected to be able to do.
+
+| | Strongly disagree | Disagree | Neither agree nor disagree | Agree | Strongly agree | Prefer not to answer |
+|---|---|---|---|---|---|---|
+| **AI1.** When investigating an unfamiliar technical topic with AI, I can decide what question would be useful to ask next. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| **AI2.** I can recognize when an AI explanation or technical claim needs further investigation. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| **AI3.** I know how to check a technical claim made by AI using evidence beyond the AI response itself. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| **AI4.** I can use follow-up questions with AI to improve my understanding of a technical topic. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| **AI5.** I can decide when I have enough evidence to accept, reject, or remain uncertain about a technical explanation provided by AI. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 
 
 ---
@@ -905,7 +940,6 @@ Thinking about the topic and the process overall, what should we do with this ho
 | N5 | Identifies a useful follow-up question and explains how it improved understanding | 5 |
 | N6 | Connects observed demo behavior to processor architecture concepts | 5 |
 | AI Conversation | Included and documents the investigation process | Required |
+| Feedback | Completes the feedback questions | 5 |
 
-**Assignment Total: 100 points**
-
-**Feedback: +5 free points**
+**Total: 100 points**
