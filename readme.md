@@ -64,8 +64,16 @@ SysArch-DGL/
 │   ├── original-dgl-preprint.pdf
 │   └── readme.md
 │
+├── ai-investigation-example.md
+│
 └── readme.md
 ```
+
+## `ai-investigation-example.md` — What a Real Investigation Looks Like
+
+This file is a real, worked example of a student using an AI assistant the way this course expects: one concept at a time, asking for analogies when something is unclear, checking their own understanding out loud, following genuine curiosity past what the assignment required, and refining an answer more than once instead of stopping at the first explanation that sounded good enough.
+
+If you're unsure what "investigate with AI" is supposed to look like in practice, as opposed to just asking for an answer and pasting it in, read through this conversation before starting your first homework. It's not tied to any single assignment topic — it's here to show the *process*, which is the same process every `Construct` section is asking you to practice.
 
 ## `HW/HW#/` --- Assignment, Submission Template, and Demo
 
@@ -518,6 +526,8 @@ long.
 
 It needs to show that you are actively using questions to improve your
 model.
+
+> **See a full real example:** [`ai-investigation-example.md`](./ai-investigation-example.md) walks through an entire student/AI conversation on a different topic (Dennard Scaling), turn by turn, with teaching notes at the end breaking down exactly what made it a genuine investigation rather than answer-fetching.
 
 ------------------------------------------------------------------------
 
