@@ -913,19 +913,6 @@ ________________________________________________
 
 - ☐ Prefer not to answer
 
-# AI Investigation Skills
-
-For each statement below, indicate how much you agree or disagree based on what you can do right now, not what you think you are expected to be able to do.
-
-| | Strongly disagree | Disagree | Neither agree nor disagree | Agree | Strongly agree | Prefer not to answer |
-|---|---|---|---|---|---|---|
-| **AI1.** When investigating an unfamiliar technical topic with AI, I can decide what question would be useful to ask next. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| **AI2.** I can recognize when an AI explanation or technical claim needs further investigation. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| **AI3.** I know how to check a technical claim made by AI using evidence beyond the AI response itself. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| **AI4.** I can use follow-up questions with AI to improve my understanding of a technical topic. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-| **AI5.** I can decide when I have enough evidence to accept, reject, or remain uncertain about a technical explanation provided by AI. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
-
-
 ---
 
 # Grading Rubric
