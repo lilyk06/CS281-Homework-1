@@ -43,27 +43,21 @@ hardware interact.
 
 # Repository Organization
 
-The repository separates the student-facing homework materials from the
-runnable demonstrations used to create the questions we investigate.
+Each homework's assignment, submission template, and runnable instructor
+demonstration live together in one place, organized by homework number.
 
 ``` text
-SYSARCH-HW/
+SysArch-DGL/
 ├── HW/
-│   ├── HW1.md
-│   ├── HW1_demo.md
-│   ├── HW2.md
-│   ├── HW2_demo.md
-│   ├── ...
-│   ├── HW7.md
-│   └── HW7_demo.md
-│
-├── HW-DEMOS/
 │   ├── HW1/
+│   │   ├── HW1.md
+│   │   ├── HW1-Submit.md
+│   │   ├── readme.md
+│   │   ├── output.md
+│   │   ├── makefile
+│   │   └── ... (demo source)
 │   ├── HW2/
-│   ├── HW3/
-│   ├── HW4/
-│   ├── HW5/
-│   ├── HW6/
+│   ├── ...
 │   └── HW7/
 │
 ├── research/
@@ -73,48 +67,40 @@ SYSARCH-HW/
 └── readme.md
 ```
 
-## `HW/` --- Assignments and Demo Guides
+## `HW/HW#/` --- Assignment, Submission Template, and Demo
 
-This is the primary student-facing directory.
+Each `HW#` subdirectory is self-contained and follows the same
+structure:
 
-For each homework:
-
--   `HW#.md` is the **actual homework assignment**.
--   `HW#_demo.md` describes the **instructor demonstration** used to
-    create the Confront moment and the question that begins the
-    investigation.
+-   `HW#.md` is the **actual homework assignment**: Connect, Confront,
+    Concept, Construct, and Confirm, including the questions you'll
+    answer.
+-   `HW#-Submit.md` is the **submission template**. This is the only
+    file you fill out and turn in — it already contains every question
+    you're graded on, along with the assignment feedback section.
+-   `readme.md` describes the **instructor demonstration**: what it's
+    showing, why it's built the way it is, and the software needed to
+    run it.
+-   `output.md` is a captured, real sample run of the demo, so the
+    expected result can be checked without a toolchain installed.
+-   `makefile` (or `Makefile`) drives every command the demo needs,
+    build, run, and clean.
+-   The remaining files are the demo's actual source: RISC-V assembly,
+    C, Python, or Verilog, depending on the homework.
 
 For example:
 
 ``` text
-HW/HW2.md
-HW/HW2_demo.md
+HW/HW2/HW2.md
+HW/HW2/HW2-Submit.md
+HW/HW2/readme.md
 ```
 
-The first file is the assignment.
+The first file is the assignment. The second is what you actually fill
+out and submit. The third explains the demonstration that motivates it.
 
-The second explains the demonstration that motivates it.
-
-## `HW-DEMOS/` --- Runnable Demonstrations
-
-The `HW-DEMOS` directory contains the complete implementations behind
-the instructor demonstrations.
-
-Depending on the homework, these directories may contain:
-
--   RISC-V assembly,
--   C,
--   Python,
--   Verilog,
--   Makefiles and build scripts,
--   simulator configuration,
--   waveform-viewer configuration,
--   sample output,
--   diagrams,
--   and other supporting artifacts.
-
-These files are included for transparency, reproducibility, and optional
-exploration.
+These demo implementations are included for transparency,
+reproducibility, and optional exploration.
 
 You are generally **not required to build or run the demonstrations
 yourself** unless an assignment specifically says otherwise.
@@ -449,13 +435,13 @@ yourself** unless the assignment specifically says otherwise.
 The student-facing description of each demonstration is available in:
 
 ``` text
-HW/HW#_demo.md
+HW/HW#/readme.md
 ```
 
-The complete runnable implementation is available in:
+The complete runnable implementation lives alongside it, in:
 
 ``` text
-HW-DEMOS/HW#/
+HW/HW#/
 ```
 
 The source code is available because:
@@ -638,7 +624,8 @@ The transcript helps show the path you took through the investigation.
 
 # What You Will Submit
 
-Each homework will tell you exactly what to submit.
+Each homework's `HW#-Submit.md` file is the only file you fill out and
+turn in. It already lays out exactly what to submit.
 
 In general, expect to complete:
 

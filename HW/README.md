@@ -1,16 +1,27 @@
-# HW-DEMOS
+# HW
 
-This directory holds the live, in-class demo that supports each
-homework's Confront phase in the course's 5C model (Connect, Confront,
-Concept, Construct, Confirm). The graded homework assignment itself
-lives one level up, in `HW/HW#.md`; everything in here exists to make
-that assignment's Confront moment a real, watchable thing rather than
-an assertion on a page.
+This directory holds all seven homework assignments for the course,
+built around the 5C model (Connect, Confront, Concept, Construct,
+Confirm). Each `HW#` subdirectory contains both the assignment itself
+and the live, in-class demo that supports its Confront phase, so the
+demo's result is a real, watchable thing rather than an assertion on a
+page.
 
 Each `HW#` subdirectory follows the same structure:
 
-- **`readme.md`** describes the demo: what it's showing, why it's built
-  the way it is, and the software that needs to be installed to run it.
+- **`HW#.md`** is the homework assignment itself: Connect, Confront,
+  Concept, Construct, and Confirm, including the questions you'll
+  answer.
+- **`HW#-Submit.md`** is the submission template. This is the **only
+  file you fill out and turn in** — it already contains every question
+  you're graded on (Part A, Part B, the AI conversation appendix, and
+  the Feedback section), formatted so it's easy to fill out, easy for
+  a TA to grade, and easy for us to pull the Feedback section into a
+  research dataset afterward. You do not need to touch or resubmit
+  `HW#.md`.
+- **`readme.md`** describes the in-class demo: what it's showing, why
+  it's built the way it is, and the software that needs to be
+  installed to run it.
 - **`output.md`** is a captured, real sample run of the demo, so the
   expected result can be checked without a toolchain installed.
 - **`makefile`** (or `Makefile`) drives every command the demo needs,
@@ -18,6 +29,15 @@ Each `HW#` subdirectory follows the same structure:
   doesn't need to piece commands together from the readme by hand.
 - The remaining files are the demo's actual source: Verilog, RISC-V
   assembly, C, or Python, depending on the homework.
+
+## Submitting your homework
+
+Submit `HW#-Submit.md` (filled in) in **Word, PDF, or Markdown**.
+**Plain Markdown is preferred** — it's the fastest for you to fill out
+and the easiest for us to grade and process. If you've never edited a
+Markdown file before, GitHub's own guide is a quick, practical place
+to start: [Basic writing and formatting
+syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
 ## The seven demos
 
