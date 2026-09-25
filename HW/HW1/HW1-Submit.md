@@ -14,14 +14,14 @@ number, see the instructions there.
 
 **MC1.** Why could a richer instruction set be attractive to a programmer writing assembly directly?
 
-- [ x] A. It can express some operations with fewer architectural instructions and less hand-written code
+- [x] A. It can express some operations with fewer architectural instructions and less hand-written code
 - [ ] B. It guarantees every program will execute faster
 - [ ] C. It eliminates the need for registers
 - [ ] D. It guarantees lower processor power
 
 **MC2.** What is a micro-operation (µop)?
 
-- [ x] A. A simplified internal operation used by modern processors when executing decoded architectural instructions
+- [x] A. A simplified internal operation used by modern processors when executing decoded architectural instructions
 - [ ] B. A separate 16-bit RISC-V instruction
 - [ ] C. A compiler optimization pass
 - [ ] D. A type of cache miss
@@ -29,13 +29,13 @@ number, see the instructions there.
 **MC3.** What changed that reduced the importance of designing an ISA primarily for humans writing assembly directly?
 
 - [ ] A. Instruction count stopped mattering completely
-- [ x] B. Optimizing compilers became capable of automatically performing much of the instruction selection, register allocation, scheduling, and optimization work
+- [x] B. Optimizing compilers became capable of automatically performing much of the instruction selection, register allocation, scheduling, and optimization work
 - [ ] C. Modern processors stopped executing machine code
 - [ ] D. RISC architectures added x86-compatible instructions
 
 **MC4.** What is one consequence of supporting a variable-length, highly expressive architectural instruction set such as x86-64?
 
-- [ x] A. The processor may require substantial front-end hardware to identify, decode, and translate instructions into operations the execution machinery can handle efficiently
+- [x] A. The processor may require substantial front-end hardware to identify, decode, and translate instructions into operations the execution machinery can handle efficiently
 - [ ] B. Every instruction must take exactly the same number of cycles
 - [ ] C. Memory operands require no internal memory access
 - [ ] D. Compilers are no longer useful
