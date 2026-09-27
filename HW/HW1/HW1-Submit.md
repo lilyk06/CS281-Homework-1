@@ -95,7 +95,65 @@ Check the **two** RISC-V design choices from lecture that most directly connect 
 
 Paste your full AI chat export below. No cleanup required.
 
->My professor has assigned a homework assignment to learn about RISC-V and x86-64 processors. Why would a programmer writing assembly directly prefer a richer instruction set like x86-64? What did things like memory operands, more expressive instructions, and fewer instructions actually make easier for programmers?
+My professor has assigned a homework assignment to learn about RISC-V and x86-64 processors. Why would a programmer writing assembly directly prefer a richer instruction set like x86-64? What did things like memory operands, more expressive instructions, and fewer instructions actually make easier for programmers?
+
+Great question—this gets at the classic CISC-vs-RISC design philosophy, and there's a real, practical answer to why a human hand-writing assembly might prefer x86-64's richer instruction set, even though compilers today mostly paper over the difference.
+
+Memory operands
+
+RISC-V is a strict load-store architecture: an instruction can only touch memory through explicit lw/sw-style loads and stores. Every arithmetic or logical operation has to work on registers. So something as simple as "add a value in memory to a register" takes two instructions on RISC-V:
+
+lw   t0, 0(a0)
+add  t1, t1, t0
+
+On x86-64, the same operation is one instruction, because arithmetic instructions can take a memory operand directly:
+
+add  eax, [rbx]
+
+For a programmer hand-writing assembly, this matters in a few concrete ways:
+
+Less bookkeeping. You don't have to manually allocate a scratch register just to shuttle a value in from memory before you can operate on it. You have one fewer register whose lifetime you need to track.
+Fewer lines to keep synchronized. If you're editing code by hand, a single "operate on memory" instruction can't get out of sync with a separate load the way two instructions can (e.g., forgetting to update the load's address).
+The code reads closer to the algorithm. add eax, [rbx] looks more like the C statement x += *p; than the two-instruction RISC-V version does, so there's less mental translation between "what I mean" and "what I wrote."
+More expressive / complex instructions
+
+x86-64 has instructions that bundle several logical steps into one opcode. Classic examples:
+
+lea rax, [rbx + rcx*4 + 8] — computes an address with a base register, scaled index register, and offset, all in one instruction, without even touching memory. On RISC-V you'd write out the shift and adds explicitly.
+rep movsb — copies an entire block of memory in one instruction (under the hood it's a hardware-implemented loop).
+String/scan instructions, enter/leave for stack frame setup/teardown, and complex addressing modes in general.
+
+For a programmer, this means:
+
+Whole idioms collapse into single instructions. Address arithmetic, loop-like block copies, and stack frame management—things you'd otherwise write as multi-instruction sequences (and could easily get wrong)—become one line.
+The instruction set has "words" for things you actually do often. It's closer to writing in a slightly higher-level language, because the ISA anticipated common patterns (array indexing, struct field access, small memcpy) and gave you a direct instruction for them.
+Fewer instructions overall (code density)
+
+Because each x86-64 instruction can do more work, a given algorithm typically takes noticeably fewer instructions than the RISC-V equivalent. This has some very tangible upsides for someone writing by hand:
+
+Less to type, less to get wrong. Every instruction you write is a chance for a typo, a wrong register, or a forgotten update. Fewer instructions means fewer chances to introduce a bug.
+Easier to read back and reason about. Short routines fit on a screen or a page; you can hold the whole thing in your head. A RISC-V version of the same routine, spread across more lines with more explicit loads/stores/address math, is more tedious to trace through by eye.
+Debugging in a disassembler/stepper is more direct. When you're single-stepping through code, "one instruction = one meaningful action" (in x86-64) can mean fewer steps to get through the same logical operation, and the disassembly maps more directly onto the high-level intent.
+The trade-off (worth mentioning for your homework)
+
+This expressiveness isn't free—it's exactly why RISC-V looks the way it does:
+
+x86-64 instructions have variable length and complex, irregular encodings, which makes decoding harder in hardware and makes the ISA itself much bigger and harder to fully master.
+RISC-V's uniformity (fixed-width instructions, only a few addressing modes, load-store-only memory access) makes it far easier to build fast, simple, pipelined hardware, and easier to write a compiler backend or reason formally about the ISA.
+In practice, this manual-friendliness of x86-64 mattered much more in the era before optimizing compilers were very good, when people really did hand-write substantial assembly. Today, compilers generate both ISAs' instructions automatically, so the "readability for humans" advantage of x86-64 is less important than it used to be—but it's still real when you are the one writing by hand, which is exactly the exercise your assignment is having you do.
+
+If it'd help, I could also sketch a short side-by-side example (like a small loop summing an array) in both RISC-V and x86-64 assembly so you can see these differences directly in your own homework.
+
+So, could I say that the main advantage for someone thats writing assembly by hand is that x86-64 allows them to express more of what they want in each instruction which means they need to do less manual bookkeeping and fewer instructions for debugging?
+
+Yes, that's a solid summary of the core idea. I'd put it this way: x86-64's richer instruction set lets each instruction carry more semantic content (memory operands built into arithmetic, complex addressing modes, multi-step operations bundled into one opcode), so the programmer can express an idea in fewer instructions. That translates into two concrete wins for someone hand-writing assembly:
+
+Less manual bookkeeping — you don't have to explicitly manage intermediate steps (like loading memory into a scratch register before you can use it, or computing an address by hand with separate shifts and adds) because the instruction itself absorbs that work.
+Fewer instructions to write, read, and debug — shorter programs mean fewer places to make a mistake, less to trace through when stepping in a debugger, and code that maps more directly onto the high-level intent.
+
+One small refinement worth adding for your homework, since it shows you understand why this trade-off exists rather than just that it exists: this expressiveness comes at the cost of a more complex, irregular instruction encoding, which is exactly what makes x86-64 hardware harder to design and pipeline efficiently. RISC-V trades away that per-instruction expressiveness deliberately, in order to keep every instruction simple and uniform, which makes the hardware simpler, faster to decode, and easier to reason about (even though it means more instructions, and more bookkeeping, for the programmer or compiler generating the code).
+
+So your one-sentence summary is right; the fuller picture for a professor would be: fewer, richer instructions are easier for the human writing them, at the cost of more complex hardware, whereas RISC-V pushes that complexity from the hardware onto the software (whether that's a human or a compiler).
 
 Good question—let's ground this in a few real, well-documented cases rather than staying abstract.
 
