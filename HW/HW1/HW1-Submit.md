@@ -48,7 +48,7 @@ number, see the instructions there.
 
 In 2–3 sentences, correct this statement: "RISC is just better because simpler instructions make a simpler processor."
 
-> Your answer:
+> Your answer: This is an oversimplification. RISC is not simply better. Yes, simpler instructions can definitely make writing, decoding, and pipelining easier, but they can also require more instructions and potentially increase your code size. The choice between RISC and more complex architectures comes with tradeoffs such as performance, power, code density, hardware complexity, software compatibility, and compiler design.
 >
 >
 >
