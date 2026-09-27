@@ -247,7 +247,7 @@ Before this assignment, how well could you explain why x86-64 and RISC-V make su
 5. I had a working background in this topic and was confident I could explain the architectural tradeoff to someone else.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** ___
+**Your answer (1–6):** _1__
 
 ### P1 — After
 
@@ -260,7 +260,7 @@ After this assignment, how well could you explain why x86-64 and RISC-V make suc
 5. I could confidently explain and defend the tradeoff in a technical discussion with someone knowledgeable about processor architecture.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** ___
+**Your answer (1–6):** _4__
 
 ### INV — What drove your investigation?
 
@@ -269,7 +269,7 @@ Pick the one that fits best.
 - [ ] I mainly wanted to complete the required assignment efficiently.
 - [ ] I mainly wanted to understand enough to answer the assignment questions correctly.
 - [ ] I mainly wanted to resolve something from the demonstration or assignment that didn't make sense to me.
-- [ ] I mainly wanted to understand the architectural tradeoff well enough that I could explain or apply it beyond this assignment.
+- [X] I mainly wanted to understand the architectural tradeoff well enough that I could explain or apply it beyond this assignment.
 - [ ] Something else. *(Optional: tell us what.)*
 - [ ] Prefer not to answer
 
@@ -279,14 +279,14 @@ Pick one.
 
 - [ ] The in-class demonstration / hook
 - [ ] Reading the Concept section
-- [ ] The AI investigation
+- [X] The AI investigation
 - [ ] Challenging or verifying something the AI told me
 - [ ] Answering the Confirm questions
 - [ ] Prefer not to answer
 
 ### SCA — What should we do with this format?
 
-- [ ] Continue as is. *Tell us more (optional): any suggestions to make it even better?*
+- [X] Continue as is. *Tell us more (optional): any suggestions to make it even better?*
 - [ ] Adjust something. *Tell us more (optional): what would you change?*
 - [ ] Stop, and go back to a traditional homework model. *Tell us more (optional): what didn't work for you?*
 - [ ] Prefer not to answer
@@ -302,11 +302,11 @@ For each statement, enter a number based on what you can do right now, not what 
 5. Strongly agree.
 6. (or blank) = Prefer not to answer.
 
-- **AI1.** When investigating an unfamiliar technical topic with AI, I can decide what question would be useful to ask next. **Your answer (1–6):** ___
-- **AI2.** I can recognize when an AI explanation or technical claim needs further investigation. **Your answer (1–6):** ___
-- **AI3.** I know how to check a technical claim made by AI using evidence beyond the AI's own explanation. **Your answer (1–6):** ___
-- **AI4.** I can use follow-up questions with AI to improve my own understanding of a technical topic. **Your answer (1–6):** ___
-- **AI5.** I can decide when I have enough evidence to accept, reject, or remain uncertain about a technical explanation provided by AI. **Your answer (1–6):** ___
+- **AI1.** When investigating an unfamiliar technical topic with AI, I can decide what question would be useful to ask next. **Your answer (1–6):** _5_
+- **AI2.** I can recognize when an AI explanation or technical claim needs further investigation. **Your answer (1–6):** _5_
+- **AI3.** I know how to check a technical claim made by AI using evidence beyond the AI's own explanation. **Your answer (1–6):** _4_
+- **AI4.** I can use follow-up questions with AI to improve my own understanding of a technical topic. **Your answer (1–6):** _5_
+- **AI5.** I can decide when I have enough evidence to accept, reject, or remain uncertain about a technical explanation provided by AI. **Your answer (1–6):** _5_
 
 ---
 
