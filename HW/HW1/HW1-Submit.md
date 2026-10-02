@@ -95,7 +95,7 @@ Check the **two** RISC-V design choices from lecture that most directly connect 
 
 Paste your full AI chat export below. No cleanup required.
 
-My professor has assigned a homework assignment to learn about RISC-V and x86-64 processors. Why would a programmer writing assembly directly prefer a richer instruction set like x86-64? What did things like memory operands, more expressive instructions, and fewer instructions actually make easier for programmers?
+**My professor has assigned a homework assignment to learn about RISC-V and x86-64 processors. Why would a programmer writing assembly directly prefer a richer instruction set like x86-64? What did things like memory operands, more expressive instructions, and fewer instructions actually make easier for programmers?**
 
 Great question—this gets at the classic CISC-vs-RISC design philosophy, and there's a real, practical answer to why a human hand-writing assembly might prefer x86-64's richer instruction set, even though compilers today mostly paper over the difference.
 
@@ -144,7 +144,7 @@ In practice, this manual-friendliness of x86-64 mattered much more in the era be
 
 If it'd help, I could also sketch a short side-by-side example (like a small loop summing an array) in both RISC-V and x86-64 assembly so you can see these differences directly in your own homework.
 
-So, could I say that the main advantage for someone thats writing assembly by hand is that x86-64 allows them to express more of what they want in each instruction which means they need to do less manual bookkeeping and fewer instructions for debugging?
+**So, could I say that the main advantage for someone thats writing assembly by hand is that x86-64 allows them to express more of what they want in each instruction which means they need to do less manual bookkeeping and fewer instructions for debugging?**
 
 Yes, that's a solid summary of the core idea. I'd put it this way: x86-64's richer instruction set lets each instruction carry more semantic content (memory operands built into arithmetic, complex addressing modes, multi-step operations bundled into one opcode), so the programmer can express an idea in fewer instructions. That translates into two concrete wins for someone hand-writing assembly:
 
@@ -195,7 +195,7 @@ Toolchain/compiler maturity	Wins — decades of optimization work in GCC/LLVM/MS
 
 The pattern across all three examples is the same one you've been building toward in this conversation: the ISA itself isn't what wins or loses—it's the combination of the ISA plus the maturity of everything built around it (compilers, existing software, manufacturing scale) that determines the real-world outcome. Apple could only make the ARM transition work because Apple controls its whole software stack and could force a recompile; WD could only make RISC-V work because its firmware has no legacy baggage; and x86-64 survives in gaming/servers primarily because of the sheer weight of existing software, not because CISC is inherently better for those workloads.
 
-Now help me put it all together? What does a richer ISA like x86-64 buy, what does it cost, what does a simpler ISA like RISC-V buy, what does it cost, and who or what was both approaches originally optimized for?
+**Now help me put it all together? What does a richer ISA like x86-64 buy, what does it cost, what does a simpler ISA like RISC-V buy, what does it cost, and who or what was both approaches originally optimized for?**
 
 Here's the full picture, pulled together from everything we've covered.
 
