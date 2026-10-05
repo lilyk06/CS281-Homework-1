@@ -230,6 +230,54 @@ RISC-V (and RISC generally) was optimized for the compiler and the pipeline. By 
 
 The one-sentence version for your assignment: x86-64 is a snapshot of an era when hardware was designed to serve the human programmer directly; RISC-V is a product of an era when hardware could be designed to serve the compiler and the pipeline instead, because the human had already been taken out of the loop—and that shift, more than anything else, is why the two architectures look so different today.
 
+**Does having fewer instructions actually mean x86-64 is easier to execute or faster, though? Could the extra complexity of decoding those richer instructions outweigh the benefit of needing fewer instructions?**
+
+Weighing when decoding complexity outweighs its benefits.
+
+Yes, exactly—and your instinct here is right: not only can the decode complexity outweigh the benefit, in practice it largely does. This is really the central irony of the whole RISC vs. CISC story.
+
+Why fewer instructions doesn't mean "easier to execute"
+
+"Easier to execute" and "fewer instructions" are actually pulling in opposite directions:
+
+Fewer, richer x86-64 instructions push complexity into the decode stage—variable-length instruction boundaries, multiple parallel decoders, a microcode ROM, a µop cache just to avoid re-decoding. All of that is real hardware, consuming real transistors and real power, sitting in the critical path before any actual work happens.
+More, simpler RISC-V instructions push that complexity out of decode and just ask the pipeline to execute more of them. But since each one is simple and fast (often one cycle, easy to parallelize), the pipeline can usually chew through the larger instruction count just as fast, or faster, than x86-64 can decode-then-execute its denser code.
+
+So "fewer instructions" doesn't translate to "less total work"—it just relocates where the work happens: either explicitly as more instructions for the execution engine, or implicitly as translation overhead in the decoder. You're not avoiding the work by writing it in fewer instructions; you're just hiding it.
+
+The direct answer to your question
+
+Yes, the decode overhead can outweigh the instruction-count savings, and this is exactly why modern x86-64 chips convert everything to µops before execution in the first place—Intel and AMD's own engineers concluded that the complex instruction encoding isn't worth executing directly, even though it's worth keeping for compatibility and code density. The µop translation layer is, in a very real sense, an admission that "fewer, richer instructions" isn't a performance advantage on its own merits—it's a legacy/compatibility feature that has to be converted away before the chip can actually go fast.
+
+Where this breaks in x86-64's favor
+
+It's worth noting this isn't a total wash—there are a couple of places where x86-64's density still pays off even after accounting for decode cost:
+
+Instruction cache pressure: denser code means more useful instructions fit in a given cache size, which can reduce cache misses—a real effect that works in x86-64's favor and partially offsets the decode cost.
+Memory bandwidth for fetch: fewer bytes need to move from memory/cache to the CPU front end per unit of work done.
+
+But these are narrower, more conditional wins (they matter more for code with poor cache locality), whereas the decode complexity tax is paid on essentially every single instruction, every single time—which is why the µop cache exists specifically to blunt that recurring cost.
+
+The one-sentence version
+
+Instruction count is a proxy for "how much the programmer/compiler had to write," not for "how much work the hardware has to do"—and since x86-64 still has to do that work somewhere (in the decoder, via µop translation), a simpler ISA that skips the translation step entirely can absolutely be just as fast or faster, even while executing more individual instructions.
+
+**Ok, so if modern processors translate complex instructions into simpler micro operatiosn anyway, does that mean the richer ISA is mainly beneficial for code density and backward compatibility today, rather than because the processor actually executes the complex instructions more efficiently?**
+
+Yes — that's the correct conclusion, and it's really the logical endpoint of everything we've worked through.
+
+Confirming your statement
+
+Once you accept that x86-64 instructions get translated into simpler µops before they're actually executed, the "richer ISA = more efficient execution" argument falls apart almost entirely. The execution engine never sees the rich instruction at all — it sees the same kind of simple, atomic operations a RISC-V core would operate on natively. So whatever benefit x86-64 provides, it can't be coming from the execution stage, because by that point the complexity has already been stripped away. What's left are exactly the two benefits you named:
+
+Code density — richer instructions still mean fewer bytes of encoded instructions for the same task, which helps instruction cache utilization and fetch bandwidth.
+Backward compatibility — the entire reason the complex encoding still exists on the outside of the chip is so that decades of existing x86-64 binaries keep working unmodified.
+Why this isn't quite the whole story — one more piece worth adding
+
+There is one place where the rich instruction does still provide a modest execution-level benefit, not because it's "more efficient to execute" but because it carries more information to the hardware in one shot:
+
+When the CPU decodes add eax, [rbx] into a load µop + add µop, it also knows at decode time that these two µops are related and can be fused or scheduled together more intelligently (this is sometimes called micro-op fusion) — effectively getting a small efficiency bonus from the fact that the original instruction told the decoder "these two things go together," rather than the decoder having to infer that relationship from two separately-fetched instructions. This is a real, measurable effect, but it's a minor optimization on top of translation, not a case of the complex instruction executing faster in its own right.
+
 ---
 
 # Feedback on the Assignment (5 free points)
