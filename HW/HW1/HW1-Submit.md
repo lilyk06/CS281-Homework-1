@@ -55,37 +55,37 @@ In 2–3 sentences, correct this statement: "RISC is just better because simpler
 
 ### N2 — Make the tradeoff real (15 pts)
 
-- **Processor, product, or workload:**
-- **Architecture involved:**
-- **Design consideration you investigated:**
-- **What the architecture buys in this example:**
-- **What it costs or trades away:**
-- **Source:**
+- **Processor, product, or workload:** A modern Intel x86-64 processor running a workload that uses memory-to-register operations
+- **Architecture involved:** x86-64
+- **Design consideration you investigated:** I investigated why x86-64 allows arithmetic instructions to use memory operands directly, while RISC-V uses a load / store model that requires the value to be loaded into a register before doing anything.
+- **What the architecture buys in this example:** The x86-64 can express operations, such as adding a value from memory, in ONE architectural instruction. This can make handwritten assembly much shorter and reduce some manual bookkeeping, while also helping with code density.
+- **What it costs or trades away:** The richer x86-64 instruction encoding is substantially more complicated to decode and translate into internal micro-operations. This adds hardware complexity and can increase the front-end power and design costs, so fewer architectural instructions do not necessarily just mean less work for the processor.
+- **Source:** Intel, *Intel® 64 and IA-32 Architectures Optimization Reference Manual*. Intel's documentation describes x86 instructions being decoded into micro-operations and discusses micro-fusion of memory-to-register operations.
 
 ### N3 — Catch the AI (20 pts)
 
-- **What the AI claimed:**
-- **Why you questioned it or wanted more precision:**
-- **What you did to check it:**
-- **What you concluded:**
+- **What the AI claimed:** The AI initially suggested that fewer x86-64 instructions could make the code easier to execute and implied that the richer instruction set could be an advantage for execution. It also described RISC-V as kind of just moving complexity from the hardware into the software.
+- **Why you questioned it or wanted more precision:** I questioned whether fewer instructions actually meant less work for the processor. If a complex x86-64 instruction has to be decoded and translated into multiple micro-operations, then the processor might still have to perform several internal operations even though the programmer just wrote one instruction.
+- **What you did to check it:** I challenged the AI's statement with a follow-up question about whether or not x86-64's decoding complexity could outweigh the benefit of having fewer instructions. I then asked about what happens to complex instructions internally and compared the explanation with some content from Intel's documentation on instruction decoding and micro-operations. Intel's documentation confirms that x86 instructions are decoded into micro-operations and that memory-to-register operations can be handled through micro-fusion.
+- **What you concluded:** Less architectural instructions does not automatically mean less work or faster execution. x86-64's richer instructions can make assembly more concise and improve code density, but they also require more complex decoding and translation. RISC-V accepts more explicit instructions, which in exchange provides for a simpler and more regular instruction format.
 
 ### N4 — Your best follow-up (10 pts)
 
 **Your follow-up question:**
 
->
+> If modern processors translate complex instructions into simpler micro-operations anyway, does that mean the richer ISA is mainly beneficial for code density and backward compatibility today, rather than because the processor actually executes the complex instructions more efficiently?
 
 **Why that question was useful, or how it changed/refined your understanding (1–2 sentences):**
 
->
+> This question helped me separate what the ISA makes easier for the programmer from what the processor actually does internally. I realized that a richer ISA can make assembly more concise without necessarily making the underlying execution simpler or faster.
 
 ### N5 — Connect back (10 pts)
 
 Check the **two** RISC-V design choices from lecture that most directly connect to the architectural tradeoff you investigated, and explain each in one sentence.
 
 - [ ] Fixed 32-bit base instruction width — explanation:
-- [ ] Load/store model — explanation:
-- [ ] Register-only ALU operations — explanation:
+- [x] Load/store model — explanation: RISC-V requires memory accesses to be handled by separate load and store instructions, which trades the convenience of x86-64 memory operands for simpler and more regular instruction behavior.
+- [x] Register-only ALU operations — explanation: RISC-V arithmetic and logical operations work on registers rather than directly on memory, which means more explicit instructions but keeps the execution of ALU operations very simple and regular.
 - [ ] 32 general-purpose registers — explanation:
 - [ ] Regular/separated instruction formats such as R-type and I-type — explanation:
 
@@ -295,7 +295,7 @@ Before this assignment, how well could you explain why x86-64 and RISC-V make su
 5. I had a working background in this topic and was confident I could explain the architectural tradeoff to someone else.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** _1__
+**Your answer (1–6):** _1_
 
 ### P1 — After
 
@@ -308,7 +308,7 @@ After this assignment, how well could you explain why x86-64 and RISC-V make suc
 5. I could confidently explain and defend the tradeoff in a technical discussion with someone knowledgeable about processor architecture.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** _4__
+**Your answer (1–6):** _4_
 
 ### INV — What drove your investigation?
 
