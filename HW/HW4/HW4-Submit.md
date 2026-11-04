@@ -99,8 +99,9 @@ Check the **two** lecture concepts that most directly explain the design decisio
 
 Paste your full AI chat export below. No cleanup required.
 
-> **I am completing a Systems Architecture homework assignment. Why does RISC-V make some hardware features, like floating-point support, optional instead of requiring every processor to include them? Explain the benefits and drawbacks simply, and give me a real-world example of a processor that might choose not to include floating-point hardware.**
-> RISC-V is built as a small mandatory base plus optional extensions. The base integer instruction set (RV32I or RV64I) is tiny, and everything else (multiply/divide “M”, atomics “A”, single-precision float “F”, double-precision float “D”, compressed instructions “C”, vectors “V”, and so on) is a separate module a chip designer can add or leave out. Floating-point is just one of those modules.
+**I am completing a Systems Architecture homework assignment. Why does RISC-V make some hardware features, like floating-point support, optional instead of requiring every processor to include them? Explain the benefits and drawbacks simply, and give me a real-world example of a processor that might choose not to include floating-point hardware.**
+
+RISC-V is built as a small mandatory base plus optional extensions. The base integer instruction set (RV32I or RV64I) is tiny, and everything else (multiply/divide “M”, atomics “A”, single-precision float “F”, double-precision float “D”, compressed instructions “C”, vectors “V”, and so on) is a separate module a chip designer can add or leave out. Floating-point is just one of those modules.
 
 Why it’s designed this way
 
