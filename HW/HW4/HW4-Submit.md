@@ -55,7 +55,7 @@ In 2–3 sentences, correct this statement: "If hardware support makes an operat
 - **Extension / hardware feature:** RISC-V F extension (hardware floating-point support).
 - **Processor or core:** RI5CY 32-bit RISC-V core with the FPnew transprecision FPU.
 - **Cost you investigated:** Hardware area (silicon area).
-- **Reported value:** The FPU uses 69 kGE out of the core's total 147 kGE.
+- **Reported value:** The FPU uses 69 kGE out of the RI5CY core's total 147 kGE, which is approximately 47% of the core's area.
 - **What the number means:** The floating-point unit takes up about 47% of the processor core's total area. This shows that adding floating-point hardware can take up a significant amount of space, especially in a small processor.
 - **Source:** Mach et al., FPnew: An Open-Source Multi-Format Floating-Point Unit Architecture for Energy-Proportional Transprecision Computing, Section IV-A, "Impact of the TP-FPU," and Figure 4. https://arxiv.org/pdf/2007.01530
 
@@ -87,8 +87,8 @@ In 2–3 sentences, correct this statement: "If hardware support makes an operat
 
 Check the **two** lecture concepts that most directly explain the design decision you investigated, and explain each in one sentence.
 
-- [x] ISA extensions and modular instruction-set design — explanation:
-- [x] Hardware versus software implementation of an operation — explanation:
+- [x] ISA extensions and modular instruction-set design — explanation: RISC-V allows processors to include or leave out optional extensions like the F extension depending on their intended use and hardware requirements.
+- [x] Hardware versus software implementation of an operation — explanation: The ESP32-C3 performs floating-point calculations through software instead of dedicated hardware, while RI5CY can use an FPU to perform them faster.
 - [ ] Die area / transistor budget — explanation:
 - [ ] IEEE-754 floating-point representation — explanation:
 - [ ] Hardware verification as an engineering constraint — explanation:
