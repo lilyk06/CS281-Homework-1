@@ -68,10 +68,10 @@ In 2–3 sentences, correct this statement: "If hardware support makes an operat
 
 ### N4 — Catch the AI (20 pts)
 
-- **What the AI claimed:** The AI agent, Claude, initially explained that the FPnew hardware increased the RI5CY core's area by 29% compared to a standard core. It also estimated that adding an FPU to a core without one would increase its area by approximately 88%.
-- **Why you questioned it or wanted more precision:** I wanted to know what the 29% was actually being compared to. I realized that the comparison might be misleading because the standard RI5CY core already included an FP32 floating-point unit. I also questioned whether the 88% estimate was an actual measurement or just an assumption.
-- **What you did to check it:** I asked the AI to identify the original comparison in the FPnew paper and explain what the 29% represented. I then asked it to explain how it calculated the 88% estimate and whether the paper actually supported that number.
-- **What you concluded:** I learned that the 29% increase was comparing a multi-format FPU to an FP32-only FPU, and not comparing a processor with an FPU to one without it. The 88% figure was just a rough estimate based on the reported area numbers, not an actual measurement from the paper. This showed me that AI can present calculations that seem convincing but still depend on assumptions that need to be checked manually.
+- **What the AI claimed:** Claude said the RI5CY configuration’s FPU supports FP32, FP16, bfloat16, and FP8, and gave 69 kGE as its area, but it had only seen search excerpts of the paper. It also later gave an estimate of about 88% area increase for adding an FPU to a core without one.
+- **Why you questioned it or wanted more precision:** I wanted the source verified before using the number, and I wanted to know whether the 88% was measured or calculated.
+- **What you did to check it:** I asked Claude to open the paper and locate the 69 kGE figure, then asked how confident I should be in the 88% estimate.
+- **What you concluded:** The 69 kGE is reported in Section IV-A.2, but Claude’s description of the formats was wrong for this configuration (no FP8, divider disabled, no separate FP register file), and the 29% is relative to an FP32-only FPU, not no FPU. The 88% is derived arithmetic, not a measurement, so I am treating it as a rough estimate only.
 
 ### N5 — Your best follow-up (10 pts)
 
