@@ -15,7 +15,7 @@ number, see the instructions there.
 **MC1.** Why does RISC-V make most extensions optional rather than putting every capability into the mandatory base ISA?
 
 - [ ] A. The extensions were unfinished
-- [ ] B. Different processors can implement only the capabilities that provide value for their target products
+- [x] B. Different processors can implement only the capabilities that provide value for their target products
 - [ ] C. Optional extensions execute faster than mandatory instructions
 - [ ] D. RISC-V prevents different processors from using different hardware
 
