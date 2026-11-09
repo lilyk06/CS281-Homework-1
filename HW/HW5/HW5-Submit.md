@@ -48,10 +48,7 @@ number, see the instructions there.
 
 In 2–3 sentences, correct this statement: "Hardware performs a computation the same way I trace software: one operation finishes, its answer becomes immediately correct, and then the next operation begins."
 
-> Your answer:
->
->
->
+> Your answer: Hardware does not execute computations one operation at a time like a software trace. Instead, multiple gates operate concurrently as electrical signals propagate through the circuit. Their outputs take a finite amount of time to become stable because transistors must charge and discharge capacitance, therefore creating propagation delays. In synchronous circuits, a clock is what determines when results are sampled, which allows enough time for signals to settle before the next operation is captured.
 
 ### N2 — Make the timing real (15 pts)
 
@@ -93,8 +90,8 @@ In 2–3 sentences, correct this statement: "Hardware performs a computation the
 
 Check the **two** concepts that most directly changed how you think about the difference between software and hardware, and explain each in one sentence.
 
-- [ ] Propagation delay — explanation:
-- [ ] Parallel / concurrent hardware behavior — explanation:
+- [x] Propagation delay — explanation: Physical signals do not change instantly because transistors need finite time to charge and discharge capacitance, meaning that hardware operations take time even when no software instruction is waiting.
+- [x] Parallel / concurrent hardware behavior — explanation: Unlike software instructions that usually execute in a defined sequence, multiple hardware gates can operate simultaneously, with signals propagating through different paths at different speeds.
 - [ ] Critical path / worst-case timing — explanation:
 - [ ] Clock period and synchronous sampling — explanation:
 - [ ] Process / voltage / temperature variation — explanation:
