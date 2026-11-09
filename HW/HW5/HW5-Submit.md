@@ -1,4 +1,4 @@
-# HW5 — Submission Template
+# HW5 — Lillian Kager
 
 This is the only file you need to fill out and submit for HW5. Copy it,
 fill in your answers directly below each question, and turn in the
@@ -15,27 +15,27 @@ number, see the instructions there.
 **MC1.** Why isn't a real digital circuit's output instantly correct when an input changes?
 
 - [ ] A. Digital circuits occasionally stop executing
-- [ ] B. Physical signals require nonzero time to propagate through transistors, gates, and interconnect
+- [x] B. Physical signals require nonzero time to propagate through transistors, gates, and interconnect
 - [ ] C. The processor waits for software permission before changing the output
 - [ ] D. Propagation delay exists only in simulators
 
 **MC2.** What does it mean to say that combinational hardware operates in parallel?
 
 - [ ] A. Every gate waits for the previous gate in the schematic to finish
-- [ ] B. Gates throughout the circuit continuously respond to their inputs, so activity can occur in many parts of the circuit simultaneously
+- [x] B. Gates throughout the circuit continuously respond to their inputs, so activity can occur in many parts of the circuit simultaneously
 - [ ] C. Every signal in the circuit becomes valid at exactly the same time
 - [ ] D. Hardware executes one Verilog statement per clock cycle
 
 **MC3.** Why does the critical path limit a synchronous circuit's maximum safe clock frequency?
 
 - [ ] A. It is the path containing the most lines of Verilog
-- [ ] B. The clock period must leave enough time for the slowest required combinational path to produce a safely usable result before it is captured
+- [x] B. The clock period must leave enough time for the slowest required combinational path to produce a safely usable result before it is captured
 - [ ] C. The critical path determines how much memory the program uses
 - [ ] D. The clock automatically waits whenever the critical path is slow
 
 **MC4.** Why do designers use timing margins rather than assuming every physical chip has exactly the same propagation delay?
 
-- [ ] A. Gate timing can vary with process, voltage, temperature, load, and other physical conditions
+- [x] A. Gate timing can vary with process, voltage, temperature, load, and other physical conditions
 - [ ] B. Digital logic has no predictable timing behavior at all
 - [ ] C. Each instruction uses a randomly selected clock frequency
 - [ ] D. Timing margins are needed only in simulations
@@ -125,7 +125,7 @@ Before this assignment, how well could you explain why hardware cannot simply be
 5. I had a working background in this topic and was confident I could explain the software-to-hardware difference coming in.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** ___
+**Your answer (1–6):** _3_
 
 ### P1 — After
 
@@ -138,7 +138,7 @@ After this assignment, how well could you explain why hardware cannot simply be 
 5. I could confidently explain and defend how physical timing changes the way hardware must be designed in a technical discussion.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** ___
+**Your answer (1–6):** _5_
 
 ### INV — What drove your investigation?
 
@@ -147,7 +147,7 @@ Pick the one that fits best.
 - [ ] I mainly wanted to complete the required assignment efficiently.
 - [ ] I mainly wanted to understand enough to answer the assignment questions correctly.
 - [ ] I mainly wanted to resolve why the hardware behaved differently from the software model I was used to.
-- [ ] I mainly wanted to understand hardware timing well enough that I could reason about circuits beyond this assignment.
+- [x] I mainly wanted to understand hardware timing well enough that I could reason about circuits beyond this assignment.
 - [ ] Something else. *(Optional: tell us what.)*
 - [ ] Prefer not to answer
 
@@ -158,7 +158,7 @@ Pick one.
 - [ ] Comparing the software model with the in-class hardware demonstration
 - [ ] Seeing the arbitrary / too-fast / safe sampling demonstrations
 - [ ] Reading the Concept section
-- [ ] The AI investigation
+- [x] The AI investigation
 - [ ] Challenging or verifying something the AI told me
 - [ ] Connecting the investigation back to circuits I built in Lab5
 - [ ] Answering the Confirm questions
@@ -166,7 +166,7 @@ Pick one.
 
 ### SCA — What should we do with this format?
 
-- [ ] Continue as is. *Tell us more (optional): any suggestions to make it even better?*
+- [x] Continue as is. *Tell us more (optional): any suggestions to make it even better?*
 - [ ] Adjust something. *Tell us more (optional): what would you change?*
 - [ ] Stop, and go back to a traditional homework model. *Tell us more (optional): what didn't work for you?*
 - [ ] Prefer not to answer
