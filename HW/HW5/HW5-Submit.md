@@ -52,39 +52,39 @@ In 2–3 sentences, correct this statement: "Hardware performs a computation the
 
 ### N2 — Make the timing real (15 pts)
 
-- **Device / technology:**
-- **Timing quantity:**
-- **Reported value or range:**
-- **Conditions, if given:**
-- **Why this number matters to a designer:**
-- **Source:**
+- **Device / technology:** Texas Instruments SN74LVC74A, a dual positive-edge-triggered D-type flip-flop.
+- **Timing quantity:** Clock-to-Q propagation delay (tpd) and data setup time (tsu).
+- **Reported value or range:** At 3.3 V, clock-to-Q propagation delay is 5.2 ns maximum, and data setup time is 3 ns minimum.
+- **Conditions, if given:** Vcc = 3.3 V += 0.3 V, operating temperature of -40°C to 125°C, with a 50 pF load and 500 Ω load resistance for the propagation delay measurement.
+- **Why this number matters to a designer:** These values help to determine the minimum safe clock period, because a signal needs time to travel from the launching flip-flop through combinational logic and satisfy the receiving flip-flop's setup requirement before the next clock edge. Designers need to account for the maximum propagation delay and required setup time to avoid timing violations.
+- **Source:** Texas Instruments, SN74LVC74A datasheet, revision SCAS287W, Sections 5.8 and 5.11, pages 7-8. Official TI datasheet. https://www.ti.com/lit/ds/symlink/sn74lvc74a.pdf
 
 ### N3 — Timing isn't one exact number (10 pts)
 
-**Factor 1:**
+**Factor 1:** Supply voltage
 
-**Why it matters:**
+**Why it matters:** Lower supply voltage generally reduces transistor drive current, therefore causing transistors to charge and discharge capacitance more slowly and increasing propagation delay. This can reduce the maximum safe clock frequency.
 
-**Factor 2:**
+**Factor 2:** Temperature.
 
-**Why it matters:**
+**Why it matters:** Temperature changes the transistor properties, including carrier mobility and threshold voltage, which can effect switching speed. Higher temperatures often increase delay, but the relationship is not always consistent because different physical effects can compete.
 
 ### N4 — Catch the AI (20 pts)
 
-- **What the AI claimed:**
-- **Why you questioned it or wanted more precision:**
-- **What you did to check it:**
-- **What you concluded:**
+- **What the AI claimed:** The AI initially claimed that lowering the supply voltage generally increases propagation delay because transistors have less drive current.
+- **Why you questioned it or wanted more precision:** I wanted to determine whether or not this was actually supported by real hardware specifications rather than assuming that a general physical trend simply applied to every device and operating condition.
+- **What you did to check it:** I investigated the Texas Instruments SN74LVC74A datasheet and compared its clock-to-Q propagation delay and data setup time at 2.7 V and 3.3 V. I also examined the specifications at 1.8 V and 2.5 V to see whether or not the same pattern appeared across all the voltage levels.
+- **What you concluded:** The datasheet supports the AI's claim when comparing 2.7 V and 3.3 V: clock-to-Q maximum delay increases from 5.2 ns to 6 ns, while minimum data setup time increases from 3 ns to 3.4 ns. However, the 2.5 V specifications do not follow the same pattern, demonstrating that these values cannot just establish a universal relationship between voltage and timing. I learned that it is important to distinguish general physical trends from guaranteed specifications for a particular device.
 
 ### N5 — Your best follow-up (10 pts)
 
 **Your follow-up question:**
 
->
+> Does increasing temperature always make a digital circuit slower? Explain how temperature affects transistor mobility, threshold voltage, and resistance. Why might the effect differ depending on supply voltage? Also explain why a designer needs to consider temperature when checking timing reliability.
 
 **Why that question was useful, or how it changed/refined your understanding (1–2 sentences):**
 
->
+> This question helped me to understand that physical factors do not always affect circuit timing in a straightforward or predictable way. I learned that increasing temperature can sometimes make a circuit faster depending on the relationship between transistor mobility, threshold voltage, and supply voltage, which is why designers need to evaluate different operating conditions rather than assume one universal timing trend.
 
 ### N6 — Connect back (5 pts)
 
@@ -511,6 +511,7 @@ Overgeneralizations to avoid
 Sources:
 
 TI SN74LVC74A datasheet (SCAS287W)
+
 ---
 
 # Feedback on the Assignment (5 free points)
