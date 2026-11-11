@@ -80,11 +80,11 @@ In 2–3 sentences, correct this statement: "Hardware performs a computation the
 
 **Your follow-up question:**
 
-> Does increasing temperature always make a digital circuit slower? Explain how temperature affects transistor mobility, threshold voltage, and resistance. Why might the effect differ depending on supply voltage? Also explain why a designer needs to consider temperature when checking timing reliability.
+> If combinational hardware doesn't execute one gate at a time, what actually determines when each gate responds to an input change? For example, if you had two independent gates receive changing inputs at the same time, but one feeds into a longer chain of gates than the other. Do both gates begin responding simultaneously? Does one gate have to wait for another? Why could signals traveling through different paths reach their destinations at different times? What happens if a downstream gate receives one updated input before another?
 
 **Why that question was useful, or how it changed/refined your understanding (1–2 sentences):**
 
-> This question helped me to understand that physical factors do not always affect circuit timing in a straightforward or predictable way. I learned that increasing temperature can sometimes make a circuit faster depending on the relationship between transistor mobility, threshold voltage, and supply voltage, which is why designers need to evaluate different operating conditions rather than assume one universal timing trend.
+> This question helped me to understand how hardware can operate concurrently even though signals do not arrive at their destinations simultaneously. I learned that gates do not wait for one another, but differences in propagation delay can cause downstream gates to temporarily receive a mixture of updated and old inputs, producing glitches.
 
 ### N6 — Connect back (5 pts)
 
