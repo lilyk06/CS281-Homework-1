@@ -67,8 +67,8 @@ Using the Scenario 1 instructions (`add t0, t1, t2` / `add t3, t4, t5` / `mul t6
 - **Why those resources exist:** More ALUs and AGUs reduce the structural hazards, so independent instructions do not have to wait for a free unit.
 The large scheduler, register file, and reorder buffer allow the core to look far ahead for independent work and hide latency from dependencies and cache misses. Also, the branch predictor and wide front end keep that large window fed with correct instructions. The multipliers and the 512-bit vector unit target data-heavy work. AMD says it widened data paths so more work is done per cycle, with the goal of double-digit IPC gains and better AI/HPC performance.
 - **Source:**
-- AMD, 5th Gen AMD EPYC Processor Architecture white paper (doc 70353): official, covers the same Zen 5 core, though it doesn't list unit counts.
-- AMD, Zen 5 Architecture slides (Hot Chips 2024), third-party-hosted copy: source of the unit counts and window sizes.
+- AMD, 5th Gen AMD EPYC Processor Architecture white paper (doc 70353): official, covers the same Zen 5 core.
+- AMD, Zen 5 Architecture slides (Hot Chips 2024), third-party copy: source of the unit counts and window sizes.
 - Wccftech, Ryzen 9 9950X review: L1 cache details.
 
 ### N4 — Catch the AI (20 pts)
