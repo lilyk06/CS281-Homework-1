@@ -15,7 +15,7 @@ number, see the instructions there.
 **MC1.** Why can the three instructions in Scenario 0 execute with overlapping execution?
 
 - [ ] A. The processor ignores instruction ordering.
-- [ ] B. The instructions are independent and can use different execution resources.
+- [x] B. The instructions are independent and can use different execution resources.
 - [ ] C. The compiler changes the instruction order automatically.
 - [ ] D. The processor executes every instruction twice.
 
@@ -23,19 +23,19 @@ number, see the instructions there.
 
 - [ ] A. The multiply unit is already being used by another instruction.
 - [ ] B. The processor does not support multiplication.
-- [ ] C. The multiply instruction requires a value produced by the previous add instruction.
+- [x] C. The multiply instruction requires a value produced by the previous add instruction.
 - [ ] D. Multiplication instructions always execute after additions.
 
 **MC3.** What is the difference between latency and throughput?
 
 - [ ] A. Latency measures chip cost, while throughput measures software complexity.
-- [ ] B. Latency describes how long one operation takes, while throughput describes how much work completes over time.
+- [x] B. Latency describes how long one operation takes, while throughput describes how much work completes over time.
 - [ ] C. Latency and throughput describe the same measurement.
 - [ ] D. Latency only applies to memory operations.
 
 **MC4.** Why don't processors simply add unlimited execution units?
 
-- [ ] A. Additional execution hardware has costs and programs may not contain enough parallel work to use it.
+- [x] A. Additional execution hardware has costs and programs may not contain enough parallel work to use it.
 - [ ] B. Multiple execution units cannot operate at the same time.
 - [ ] C. Software cannot benefit from faster hardware.
 - [ ] D. Additional hardware always reduces performance.
