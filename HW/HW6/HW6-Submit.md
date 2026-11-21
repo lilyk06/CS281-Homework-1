@@ -49,25 +49,27 @@ number, see the instructions there.
 Correct this statement: "Because a program is written sequentially, the processor must execute each instruction completely before beginning the next instruction." Your answer should reference multiple execution resources, instruction independence, and data dependencies.
 
 > Your answer:
->
->
->
+>Although a program is written sequentially, a processor does not **have** to finish each instruction before starting the next. Because a modern core has multiple execution resources, such as several integer ALUs, address-generation and load/store units, and floating-point/vector units, it **can** overlap instructions that are independent of one another, meaning that neither needs a result that the other produces. Only instructions with a true data dependency, such as a read-after-write, where one instruction consumes a value another writes, need to wait for the producer's result. The processor tracks these dependencies, executes ready instructions out of order when a suitable unit is free, and commits the results in program order, so the outcome is the same as if every instruction had run one at a time.
 
 ### N2 — Explain the Scenario 1 dependency (15 pts)
 
 Using the Scenario 1 instructions (`add t0, t1, t2` / `add t3, t4, t5` / `mul t6, t3, t8`), explain why the multiply instruction must wait.
 
-- **Which instruction produces the required value:**
-- **Which instruction consumes that value:**
-- **Why the processor cannot safely execute the multiply early:**
+- **Which instruction produces the required value:** (add t3, t4, t5) produces the required value. It writes the result into t3.
+- **Which instruction consumes that value:** (mul t6, t3, t8) consumes it. It reads t3 as a source operand. This is a true read-after-write (RAW) data dependency from (add t3, t4, t5) to (mul t6, t3, t8). (add t0, t1, t2) is not involved: it writes t0, which nothing here reads, so (add t0, t1, t2) is independent of both of the other instructions.
+- **Why the processor cannot safely execute the multiply early:** Until (add t3, t4, t5) finishes, t3 does not hold the value the program intends for (mul t6, t3, t8) to use. Instead, it holds an older value, or, in a renaming core, a physical register that has not been written yet. If the multiply ran early, it would compute t6 with the wrong t3, and the result of the program would differ from sequential execution. The dependency comes from the data itself, so adding more execution units or renaming registers cannot remove it. The processor enforces it by keeping the mul in the queue until (add t3, t4, t5) broadcasts its result, at which point the mul is then ready and can issue.
 
 ### N3 — Investigate a real processor (15 pts)
 
-- **Processor / processor family:**
-- **Execution resources identified:**
-- **Specialized hardware you found:**
-- **Why those resources exist:**
+- **Processor / processor family:** AMD Ryzen 9 9950X, built on AMD's Zen 5 core (codename Granite Ridge). It has 16 cores and 32 threads, and a max boost clock of 5.7 GHz.
+- **Execution resources identified:** 6 integer ALUs, 3 of them with multipliers, plus 3 branch units. Also, 4 address-generation units (AGUs), feeding 4 memory addresses per cycle to the load/store unit. Additionally, a floating-point/vector unit with a full 512-bit data path and six pipelines. Lastly, an 8-wide dispatch, with an 88-entry ALU scheduler, a 56-entry AGU scheduler, a 240-entry physical register file, and a 448-entry reorder buffer, which show it is an out-of-order design
+- **Specialized hardware you found:** 512-bit SIMD (AVX-512) support. AMD's white paper says that it implements the full set of AVX-512 instructions used in 4th Gen Intel Xeon except FP16 data types. Also, a front end with dual-pipe instruction fetching and highly accurate branch prediction. Additionally, caching and prefetch hardware including a 48 KB, 12-way L1 data cache with a 4-cycle load and increased data prefetch, as well as SMT (2 hardware threads per core).
+- **Why those resources exist:** More ALUs and AGUs reduce the structural hazards, so independent instructions do not have to wait for a free unit.
+The large scheduler, register file, and reorder buffer allow the core to look far ahead for independent work and hide latency from dependencies and cache misses. Also, the branch predictor and wide front end keep that large window fed with correct instructions. The multipliers and the 512-bit vector unit target data-heavy work. AMD says it widened data paths so more work is done per cycle, with the goal of double-digit IPC gains and better AI/HPC performance.
 - **Source:**
+- AMD, 5th Gen AMD EPYC Processor Architecture white paper (doc 70353): official, covers the same Zen 5 core, though it doesn't list unit counts.
+- AMD, Zen 5 Architecture slides (Hot Chips 2024), third-party-hosted copy: source of the unit counts and window sizes.
+- Wccftech, Ryzen 9 9950X review: L1 cache details.
 
 ### N4 — Catch the AI (20 pts)
 
