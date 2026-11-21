@@ -73,27 +73,27 @@ The large scheduler, register file, and reorder buffer allow the core to look fa
 
 ### N4 — Catch the AI (20 pts)
 
-- **What the AI claimed:**
-- **Why you questioned it:**
-- **How you verified it:**
-- **What you concluded:**
+- **What the AI claimed:** The AI initially explained that independent instructions can execute simultaneously if their operands are ready and the required execution units are available.
+- **Why you questioned it:** I questioned whether or not having independent instructions and available execution units was always enough to guarantee parallel execution. I wanted to understand whether other limitations, such as instruction scheduling, issue width, execution-port availability, memory operations, or power constraints, could prevent independent instructions from overlapping.
+- **How you verified it:** I asked the AI to reconsider its original explanation using the AMD Ryzen 9 9950X as an example. I investigated its execution resources, scheduler, issue width, and instruction window using AMD's Zen 5 architecture documentation and Hot Chips 2024 architecture slides, along with articles discussing the architecture. I compared the information to the AI's original explanation to identify limitations that it did not initially mention.
+- **What you concluded:** I concluded that having independent instructions and available execution units **is** necessary, but not sufficient, to guarantee simultaneous execution. A processor also has limitations involving scheduling, issue width, execution-port availability, and the size of its instruction window. For example, the Ryzen 9 9950X has six integer ALUs, but only three are capable of multiplication, so six independent multiply instructions cannot all begin in the same cycle. This showed me that actual instruction-level parallelism depends on both the instructions in a program and the hardware limitations of the processor.
 
 ### N5 — Your best follow-up question (10 pts)
 
 **Question:**
 
->
+> How does the scheduler decide which instruction to prioritize when multiple instructions are ready to execute but there are limited execution resources? For example, does it prioritize older instructions, instructions that take longer to execute, or instructions that will allow other instructions to proceed? How does this decision affect overall processor performance?
 
 **Why was this question useful?**
 
->
+> This question was useful for me because it helped me understand that having independent instructions and available execution units does not automatically mean that the processor will execute them all at once. The scheduler needs to decide which instructions will get priority when resources are limited. It also made me think more about how scheduling decisions can affect performance, especially when one instruction is part of a longer chain of dependent instructions.
 
 ### N6 — Connect back to the demo (5 pts)
 
 Select the **two** concepts that best explain what you observed, and explain each.
 
-- [ ] Multiple execution resources — explanation:
-- [ ] Instruction independence — explanation:
+- [x] Multiple execution resources — explanation: In Scenario 0, the processor had separate execution resources that allowed two ADD instructions and one MUL instruction to execute at the same time. This demonstrated how a processor can overlap independent instructions instead of executing every instruction one at a time.
+- [x] Instruction independence — explanation: In Scenario 1, the MUL instruction depended on the value of t3, which was produced by the second ADD instruction. Even though the MUL execution unit was available, the MUL had to wait until the ADD finished producing t3. This demonstrated that data dependencies can prevent instructions from executing in parallel.
 - [ ] Data dependencies — explanation:
 - [ ] Latency versus throughput — explanation:
 - [ ] Specialized hardware — explanation:
@@ -609,7 +609,7 @@ Before this assignment, how well could you explain why a processor can execute m
 5. I could confidently explain why processors use parallel execution resources.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** ___
+**Your answer (1–6):** _2_
 
 ### P1 — After
 
@@ -622,7 +622,7 @@ After completing this assignment, how well could you explain why a processor can
 5. I can confidently explain how instruction-level parallelism affects processor design.
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** ___
+**Your answer (1–6):** _5_
 
 ### INV — What drove your investigation?
 
@@ -631,7 +631,7 @@ Pick the one that fits best.
 - [ ] I mainly wanted to complete the assignment efficiently.
 - [ ] I mainly wanted to understand enough to answer the required questions.
 - [ ] I mainly wanted to understand why processor behavior differs from the sequential software model.
-- [ ] I mainly wanted to understand how real processors create and manage parallel execution.
+- [x] I mainly wanted to understand how real processors create and manage parallel execution.
 - [ ] Something else. *(Optional: tell us what.)*
 - [ ] Prefer not to answer
 
@@ -643,7 +643,7 @@ Pick one.
 - [ ] The waveform analysis
 - [ ] Connecting the demo to RISC-V instructions
 - [ ] The Concept section
-- [ ] The AI investigation
+- [x] The AI investigation
 - [ ] Investigating a real processor
 - [ ] Challenging or verifying AI responses
 - [ ] Confirm questions
@@ -660,14 +660,14 @@ The demonstration helped me understand how sequential programs can result in par
 5. Strongly agree
 6. (or blank) = Prefer not to answer.
 
-**Your answer (1–6):** ___
+**Your answer (1–6):** _5_
 
 ### AIUSE — How did you use AI?
 
 Pick the one that fits best.
 
 - [ ] To quickly obtain answers.
-- [ ] To explain concepts I did not understand.
+- [x] To explain concepts I did not understand.
 - [ ] To generate follow-up questions.
 - [ ] To explore concepts beyond the assignment.
 - [ ] To verify information and compare explanations.
