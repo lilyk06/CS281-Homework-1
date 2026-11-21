@@ -93,8 +93,8 @@ The large scheduler, register file, and reorder buffer allow the core to look fa
 Select the **two** concepts that best explain what you observed, and explain each.
 
 - [x] Multiple execution resources — explanation: In Scenario 0, the processor had separate execution resources that allowed two ADD instructions and one MUL instruction to execute at the same time. This demonstrated how a processor can overlap independent instructions instead of executing every instruction one at a time.
-- [x] Instruction independence — explanation: In Scenario 1, the MUL instruction depended on the value of t3, which was produced by the second ADD instruction. Even though the MUL execution unit was available, the MUL had to wait until the ADD finished producing t3. This demonstrated that data dependencies can prevent instructions from executing in parallel.
-- [ ] Data dependencies — explanation:
+- [ ] Instruction independence — explanation: 
+- [x] Data dependencies — explanation: In Scenario 1, the MUL instruction depended on the value of t3, which was produced by the second ADD instruction. Even though the MUL execution unit was available, the MUL had to wait until the ADD finished producing t3. This demonstrated that data dependencies can prevent instructions from executing in parallel.
 - [ ] Latency versus throughput — explanation:
 - [ ] Specialized hardware — explanation:
 - [ ] Scheduling decisions — explanation:
